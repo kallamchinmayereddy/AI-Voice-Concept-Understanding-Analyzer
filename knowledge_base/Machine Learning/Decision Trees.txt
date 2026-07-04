@@ -1,0 +1,39 @@
+Topic: Decision Trees
+
+Definition
+Decision Trees are a non-parametric supervised learning method used for both classification and regression tasks. They model decisions and their possible consequences in a tree-like structure, much like a flowchart. Each internal node represents a test on an attribute, each branch represents an outcome of the test, and each leaf node represents a class label (in classification) or a numerical value (in regression). The path from the root to a leaf represents a set of rules for making a decision. Essentially, a decision tree recursively splits the dataset into smaller and smaller subsets based on the most significant features, aiming to create subsets that are as homogeneous as possible with respect to the target variable.
+
+Working Principle
+The core idea behind a decision tree is to break down a dataset into smaller, more manageable parts while incrementally developing an associated decision tree. The process begins at the "root node," which represents the entire dataset. The algorithm then evaluates all available features to find the "best split" – the feature and its threshold that most effectively divides the data into distinct groups. For classification problems, "best split" usually means maximizing information gain (reducing entropy) or minimizing Gini impurity. Information gain quantifies the expected reduction in entropy caused by splitting the data according to a given attribute. Gini impurity measures how often a randomly chosen element from the set would be incorrectly labeled if it were randomly labeled according to the distribution of labels in the subset. For regression problems, criteria like Mean Squared Error (MSE) are used, aiming to minimize the variance within each resulting subset.
+
+Once the best split is found, the root node branches into "internal nodes," each representing one of the outcomes of the split. This splitting process is then recursively applied to each internal node, creating further branches and nodes, until a "leaf node" is reached. Leaf nodes represent the final decision or prediction. The recursion stops when certain conditions are met, such as reaching a maximum tree depth, when the number of data points in a node falls below a predefined minimum, or when further splitting no longer significantly improves the purity of the subsets. To make a prediction for a new data point, one simply traverses the tree from the root, following the branches corresponding to the data point's feature values, until a leaf node is reached. The value or class label associated with that leaf node is the prediction.
+
+Types
+There are several popular algorithms for building decision trees, each with slight variations in their splitting criteria and handling of data types:
+ID3 (Iterative Dichotomiser 3): Primarily used for classification, handles categorical features only, and uses Information Gain as its splitting criterion.
+C4.5: An improvement over ID3, it can handle both categorical and numerical features, missing values, and uses gain ratio (a normalized version of information gain) to reduce bias towards attributes with many outcomes.
+CART (Classification and Regression Trees): This is the most widely used algorithm. It can handle both classification and regression tasks. For classification, it typically uses Gini impurity, and for regression, it uses mean squared error. It can handle both numerical and categorical data.
+
+Advantages
+Decision trees are highly intuitive and easy to understand and interpret, making them excellent for explaining complex decisions to non-technical stakeholders. Their tree structure can be easily visualized, which aids in comprehending the logic behind predictions. They require little data preparation; for instance, they do not need feature scaling or normalization. Decision trees can handle both numerical and categorical data directly. They are capable of modeling non-linear relationships between features and the target variable, which many linear models cannot do. Furthermore, decision trees can implicitly perform feature selection, as features that are important for splitting the data will appear higher up in the tree.
+
+Disadvantages
+One of the main drawbacks of decision trees is their tendency to overfit the training data, especially when the tree becomes too deep or complex. This can lead to poor generalization performance on unseen data. They can also be unstable; a small change in the training data can sometimes result in a completely different tree structure. Decision trees are known to be biased towards features with more levels or categories, as such features might appear to offer higher information gain. The greedy approach used in building the tree, where splits are made locally optimally at each step, does not guarantee a globally optimal tree. This means the tree might not find the best possible sequence of splits. They can also struggle with imbalanced datasets, where the majority class might dominate the tree construction.
+
+Applications
+Decision trees are widely used across various industries due to their interpretability and versatility. In medicine, they assist in diagnosing diseases based on patient symptoms and medical test results. Financial institutions use them for credit risk assessment, determining the likelihood of a customer defaulting on a loan, and for fraud detection. Marketing teams leverage decision trees for customer segmentation, predicting customer churn, and identifying potential buyers for new products. In manufacturing, they are used for quality control, predicting defects in products based on production parameters. They are also used in bioinformatics, remote sensing, and even in game development for AI decision-making.
+
+Real-world Example
+Consider a bank wanting to predict if a customer will default on a loan. A decision tree can be built using historical customer data. The root node might test "Credit Score >= 700". If true, the branch goes to a node testing "Annual Income >= $50,000". If false, it goes to another node. Further down the tree, other attributes like "Employment Length" or "Debt-to-Income Ratio" might be tested. For example, a path could be: (Credit Score >= 700) -> (Annual Income >= $50,000) -> (Has Previous Loan Default == No) -> Predict: "No Default". Another path could be: (Credit Score < 700) -> (Employment Length < 1 Year) -> Predict: "Default". By following these rules, the bank can assess the risk associated with a new loan applicant.
+
+Important Keywords
+Root Node
+Leaf Node
+Internal Node
+Splitting Criteria
+Information Gain
+Gini Impurity
+Overfitting
+Pruning
+CART
+Classification/Regression

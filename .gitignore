@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Python Cache
+.pytest_cache/
+.mypy_cache/
+
+# Streamlit Cache
+.streamlit/cache/
+
+# Temporary Files
+temp/
+*.tmp
+
+# Logs
+*.log
+
+# Build Files
+build/
+dist/
+*.egg-info/
+
+# Model Cache (Optional)
+.cache/
+.whisper/
+.huggingface/

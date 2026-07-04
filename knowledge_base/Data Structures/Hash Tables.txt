@@ -1,0 +1,50 @@
+Topic: Hash Tables
+
+Definition
+A hash table is a data structure that implements an associative array abstract data type, which means it stores collections of key-value pairs. It maps keys to values, allowing for efficient retrieval of values based on their associated keys. The core idea is to use a special function, called a hash function, to compute an index into an array of buckets or slots, from which the desired value can be found. This mechanism aims to provide very fast access to data, typically in constant time on average, regardless of the size of the data set.
+
+Working Principle
+The fundamental operation of a hash table relies on a hash function and an underlying array. When a key-value pair is to be stored, the hash function takes the key as input and processes it to produce an integer, known as the hash value or hash code. This hash value is then typically used to calculate an index within the bounds of the hash table's internal array. For example, the hash value might be subjected to a modulo operation with the size of the array to get the final index. The key-value pair is then stored at this computed index.
+
+When retrieving a value, the same hash function is applied to the search key, generating the same index. The hash table then directly accesses the array at this index to retrieve the associated value. Ideally, each key maps to a unique index, allowing for constant-time (O(1)) operations for insertion, deletion, and lookup. However, it is possible for two different keys to produce the same hash value, leading to the same index. This situation is called a collision. Effective collision resolution strategies are crucial for the performance of a hash table. The efficiency of a hash table is also influenced by its load factor, which is the ratio of the number of stored items to the total number of buckets. A high load factor can increase the likelihood of collisions and degrade performance.
+
+Types
+The "types" of hash tables are primarily distinguished by their approach to collision resolution, which is how they handle situations where different keys map to the same array index.
+
+1.  Separate Chaining: In this method, each slot in the hash table array points to a linked list (or another data structure like a balanced binary search tree). When a collision occurs, the new key-value pair is simply added to the linked list at the computed index. Retrieval involves traversing the linked list at that index to find the specific key.
+
+2.  Open Addressing: This approach attempts to find the next available empty slot directly within the hash table array itself when a collision occurs. Instead of external data structures, it uses a probing sequence to search for an open address. Common probing techniques include:
+    *   Linear Probing: It checks the next slot sequentially (i.e., index + 1, index + 2, etc.) until an empty slot is found.
+    *   Quadratic Probing: It checks slots at quadratically increasing offsets (i.e., index + 1^2, index + 2^2, etc.).
+    *   Double Hashing: It uses a second hash function to determine the step size for probing, providing a more uniform distribution of probes.
+
+Advantages
+Hash tables offer several significant advantages. On average, they provide extremely fast time complexity for insertion, deletion, and search operations, typically achieving O(1) constant time. This makes them highly efficient for managing large datasets where quick data access is paramount. They are generally simpler to implement than more complex balanced tree structures for the same O(log N) average-case performance. Hash tables are very effective in scenarios where the order of elements is not important and random access is the primary requirement. They are widely supported in modern programming languages as built-in dictionary or map types, making them convenient to use.
+
+Disadvantages
+Despite their advantages, hash tables have some drawbacks. In the worst-case scenario, if all keys hash to the same index due to a poor hash function or pathological input, the time complexity for operations can degrade to O(N), where N is the number of elements. This effectively turns the hash table into a linked list or linear scan. Their performance is highly dependent on the quality of the hash function; a bad hash function can lead to many collisions and poor performance. Hash tables typically require more space than some other data structures due to the underlying array and potential overhead for collision resolution (e.g., pointers for linked lists in chaining or unused slots in open addressing). They are not suitable for operations that require ordered data traversal or range queries, as the elements are scattered based on their hash values.
+
+Applications
+Hash tables are widely used across various domains in computer science and engineering due to their efficiency. Some common applications include:
+*   Symbol tables in compilers and interpreters for storing identifiers and their properties.
+*   Database indexing, where they help to quickly locate records based on a primary key.
+*   Implementing caches in web browsers, operating systems, and applications to store frequently accessed data for faster retrieval.
+*   Representing dictionaries or maps in programming languages, allowing key-value pair storage.
+*   Implementing sets, which store unique elements without associated values.
+*   Network routers use hash tables to store routing information.
+*   Password verification systems use hash functions to store and compare hashed passwords.
+
+Real-world Example
+A practical real-world example of a hash table is how a programming language like Python implements its 'dictionary' type or Java implements its 'HashMap'. When you create a dictionary mapping names to phone numbers, for instance, the dictionary uses a hash table internally. If you store 'Alice' -> '555-1234' and 'Bob' -> '555-5678', when you ask for 'Bob's' number, the system hashes 'Bob', gets an index, and directly retrieves '555-5678' very quickly.
+
+Important Keywords
+1.  Hash Function
+2.  Collision
+3.  Collision Resolution
+4.  Separate Chaining
+5.  Open Addressing
+6.  Load Factor
+7.  Key-Value Pair
+8.  Hash Value
+9.  Probing
+10. Associative Array

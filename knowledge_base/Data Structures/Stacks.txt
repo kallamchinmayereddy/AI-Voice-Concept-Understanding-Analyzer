@@ -1,0 +1,41 @@
+Topic: Stacks
+
+Definition
+A stack is a linear data structure that follows a particular order in which operations are performed. The order is Last In, First Out (LIFO). This means that the last element added to the stack is always the first one to be removed. Imagine a stack of physical items, like a pile of plates: you always place a new plate on top, and when you want to use a plate, you take the one from the very top. Elements are added to and removed from only one end, which is referred to as the "top" of the stack.
+
+Working Principle
+The fundamental principle governing a stack is LIFO. This means the element inserted most recently into the stack is the first element to be retrieved and removed. Stacks are defined by two primary operations:
+1. Push: This operation adds an element to the top of the stack. When a new element is pushed, the stack's top pointer or index is adjusted, and the new element is placed at this new top position. If the stack is implemented with a fixed-size storage (like an array) and it reaches its maximum capacity, an error condition called "Stack Overflow" occurs, meaning no more elements can be added.
+2. Pop: This operation removes the element from the top of the stack. When an element is popped, it is retrieved from the top of the stack, and then the stack's top pointer or index is decremented to reflect the new top element. If an attempt is made to pop an element from an empty stack, an error condition called "Stack Underflow" occurs, indicating there are no elements to remove.
+In addition to these core operations, stacks typically support auxiliary operations:
+* Peek or Top: This operation allows viewing the element at the top of the stack without removing it. It simply returns the value of the top element.
+* isEmpty: This operation checks whether the stack currently contains any elements. It returns true if the stack is empty and false otherwise.
+* isFull: This operation, primarily relevant for fixed-size stack implementations, checks if the stack has reached its maximum storage capacity. It returns true if full and false otherwise.
+Stacks can be implemented using either arrays or linked lists. An array-based implementation requires a predefined maximum size, which can lead to overflow. A linked list implementation is more dynamic, allowing the stack to grow or shrink as needed, limited only by available memory, thus avoiding stack overflow due to fixed size.
+
+Types
+Not Applicable. Stacks are a fundamental abstract data type defined by their LIFO behavior. While their underlying implementation can vary (e.g., using arrays or linked lists), these are implementation choices rather than different "types" of stacks themselves. The conceptual model of a stack remains consistent regardless of how it is built.
+
+Advantages
+One of the primary advantages of stacks is their simplicity and the efficiency of their core operations. Pushing and popping elements typically take constant time, denoted as O(1), making them extremely fast for adding and removing items from the top. The LIFO nature of stacks makes them inherently suitable for managing operations where the most recently added item needs to be processed first, such as function call management, parsing expressions, and certain backtracking algorithms. Stacks impose a clear and predictable order of operations, which can simplify the design and debugging of algorithms that require this specific sequence. They also provide an intuitive way to manage temporary data that needs to be accessed in the reverse order of its creation. For array-based implementations, memory allocation can be straightforward and contiguous.
+
+Disadvantages
+Despite their utility, stacks have certain disadvantages. A significant limitation, especially with array-based implementations, is their fixed size. If the maximum capacity is reached, any further push operations will result in a "Stack Overflow" error, potentially crashing the program if not handled properly. While linked list implementations overcome the fixed-size issue, they introduce additional memory overhead due to the storage required for pointers with each node. Stacks offer restricted access; you can only directly access the element at the top. To access an element deeper within the stack, all elements above it must first be popped, which can be inefficient and destructive to the stack's current state. This restricted access means that searching for an arbitrary element within a stack is not an efficient operation and is generally not a suitable use case for this data structure. Furthermore, attempting to pop from an empty stack (Stack Underflow) also leads to errors and requires careful handling.
+
+Applications
+Stacks are widely used in various areas of computer science. A fundamental application is in managing function calls, often referred to as the call stack. When a function is called, its local variables and return address are pushed onto the call stack; when the function completes, these items are popped off. Compilers use stacks extensively for parsing and evaluating arithmetic expressions, converting infix expressions to postfix or prefix notations, and checking for balanced parentheses. Backtracking algorithms, such as solving mazes, the N-Queens problem, or generating permutations, frequently employ stacks to store potential paths and revert to previous states when a dead end is encountered. Stacks are also integral to the undo/redo functionality found in most software applications (e.g., text editors, graphics programs), where each action is pushed onto a stack and popped to undo. Recursion, a programming technique where a function calls itself, implicitly relies on the call stack to manage multiple instances of the function.
+
+Real-world Example
+A practical and commonly encountered real-world example of a stack is the "back" button functionality in web browsers. Each time you visit a new webpage, the URL of that page is "pushed" onto a history stack. When you click the "back" button, the most recently visited URL is "popped" from the stack, and the browser navigates to the previous page. If you continue to click "back," the browser keeps popping pages off the stack in reverse order of your visits, perfectly demonstrating the Last In, First Out (LIFO) principle. The "forward" button often uses a separate stack to store pages that were "popped" from the back stack, allowing you to retrace your steps forward.
+
+Important Keywords
+* LIFO
+* Push
+* Pop
+* Top
+* Stack Overflow
+* Stack Underflow
+* Call Stack
+* Recursion
+* Infix to Postfix
+* Backtracking

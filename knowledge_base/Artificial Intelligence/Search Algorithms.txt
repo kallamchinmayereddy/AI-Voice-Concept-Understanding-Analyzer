@@ -1,0 +1,34 @@
+Topic: Search Algorithms
+
+Definition
+Search algorithms in Artificial Intelligence are systematic computational methods used to solve problems by finding a valid sequence of actions that transforms an initial state into a desired goal state. This process occurs within a "problem space," typically represented as a state-space graph where nodes denote possible states and edges signify actions or transitions between them. The primary objective is to discover an optimal or satisfactory path through the systematic exploration of this graph. They are fundamental to AI systems involved in planning, decision-making, and problem-solving.
+
+Working Principle
+The core principle involves systematically exploring the problem's state space. A search algorithm starts at an initial state, then generates and evaluates successor states by applying available operators. It commonly maintains an "open" list (frontier) for states discovered but not yet expanded, and a "closed" list for states already visited. In each step, a node is selected from the open list, expanded to generate its children (neighboring states), checked if any child is the goal, and then unvisited children are added to the open list before the expanded node moves to the closed list. The specific method of selecting the next node defines the algorithm. Exploration continues until a goal state is found or the state space is exhausted.
+
+Types
+Search algorithms are primarily categorized into uninformed (blind) search and informed (heuristic) search. Uninformed algorithms operate without problem-specific domain knowledge, relying only on identifying goal states and generating successors. They explore systematically without directional guidance. Examples include Breadth-First Search (BFS), which explores level by level, and Depth-First Search (DFS), which explores deeply. Others include Uniform Cost Search (UCS) and Iterative Deepening Depth-First Search (IDDFS). Informed search algorithms leverage problem-specific knowledge via a heuristic function to estimate the cost or distance from the current state to the goal. This heuristic guides the search more efficiently. Key examples are Greedy Best-First Search and A* Search, known for its optimality under certain conditions.
+
+Advantages
+Search algorithms offer significant benefits in AI problem-solving. They provide a structured and adaptable framework for navigating complex problem spaces where direct solutions are not obvious. Their generality allows application across diverse problems. Complete algorithms are guaranteed to find a solution if one exists. Informed search algorithms, by integrating domain-specific heuristics, dramatically improve efficiency, enabling resolution of much larger problems than uninformed methods. They form a fundamental basis for many advanced AI techniques.
+
+Disadvantages
+Despite their utility, search algorithms face limitations, mainly regarding computational resources. A major drawback is their time and space complexity, especially with large state spaces. Uninformed algorithms can be inefficient, exploring many irrelevant states. DFS risks getting trapped in infinite loops or deep unproductive paths. BFS, while complete and optimal for unit-cost paths, can consume vast memory. Informed search performance hinges critically on the quality of its heuristic; a poor heuristic can lead to suboptimal solutions or worse performance. The "state-space explosion" problem often renders complex real-world problems intractable for naive search.
+
+Applications
+Search algorithms are extensively applied across various domains in AI and computer science. They are fundamental to pathfinding and navigation systems, such as in GPS for route optimization and robotics for motion planning. In game AI, they are used for strategic decision-making, character movement, and game-tree exploration. Other uses include network routing, resource allocation, scheduling, natural language processing, and bioinformatics. They underpin many optimization tasks and automated reasoning systems.
+
+Real-world Example
+A prominent real-world example is the navigation system in GPS devices or mapping applications like Google Maps. When you request directions, the system employs search algorithms to find the optimal route. The road network represents the state space, with intersections as nodes and road segments as edges. Each edge has an associated cost (e.g., travel time, distance, traffic). The navigation system uses algorithms like A* Search to find the path with the minimum accumulated cost from your current location (initial state) to your destination (goal state). The heuristic function often used is the straight-line distance from any given intersection to the final destination, which effectively guides the search towards the goal.
+
+Important Keywords
+State Space
+Node
+Edge
+Heuristic Function
+Uninformed Search
+Informed Search
+Breadth-First Search
+Depth-First Search
+A* Search
+Goal State
